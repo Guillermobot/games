@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.812.0",
     "aws-sdk": "^2.1692.0",
