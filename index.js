@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const rutas = require("./rutas");
 const { enviarJuegoASQS, enviarJugadorASQS } = require("./sqs");
 
 app.use(express.json());
+app.use("/1", rutas);
 
 // Array para guardar juegos
 let juegos = [];

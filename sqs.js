@@ -18,17 +18,17 @@ function enviarJugadorASQS(jugador) {
   const datos = {
     DelaySeconds: 0,
     MessageAttributes: {
-      username: {
+      gamertag: {
         DataType: "String",
-        StringValue: jugador.username,
+        StringValue: String(jugador.gamertag || ""),
       },
-      Edad: {
-        DataType: "Number",
-        StringValue: String(jugador.edad),
+      comentario: {
+        DataType: "String",
+        StringValue: String(jugador.comentario || ""),
       },
-      JuegoId: {
+      calificacion: {
         DataType: "Number",
-        StringValue: String(jugador.juegoId),
+        StringValue: String(Number(jugador.calificacion)),
       },
     },
     MessageBody: JSON.stringify(jugador),
@@ -39,7 +39,7 @@ function enviarJugadorASQS(jugador) {
     if (err) {
       console.error("❌ Error al enviar jugador a SQS:", err);
     } else {
-      console.log("✅ Jugador enviado a SQS. ID:", data.MessageId);
+      console.log("✅ Jugador enviado a SQS:", data.MessageId);
     }
   });
 }
